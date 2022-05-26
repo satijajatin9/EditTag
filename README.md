@@ -1,6 +1,4 @@
 # EditTag
-[![](https://jitpack.io/v/satijajatin9/EditTag.svg)]([https://jitpack.io/#satijajatin9/EditTag/1.0.0](https://jitpack.io/#satijajatin9/EditTag/1.0.0))
-
 
 ### How to use
 
