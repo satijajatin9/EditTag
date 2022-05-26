@@ -1,5 +1,5 @@
 # EditTag
-[![](https://jitpack.io/v/qiugang/EditTag.svg)](https://jitpack.io/#qiugang/EditTag)
+[![](https://jitpack.io/v/satijajatin9/EditTag.svg)](https://jitpack.io/#satijajatin9/EditTag)
 
 ### How to use
 
