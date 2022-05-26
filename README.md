@@ -9,7 +9,7 @@
      maven { url "https://jitpack.io" }
  }
  dependencies {
-     implementation 'com.github.satijajatin9:EditTag:{latest version}'
+     implementation 'com.github.satijajatin9:EditTag:1.0.0'
  }
 ```
 * Add EditTag View in your layout resource
