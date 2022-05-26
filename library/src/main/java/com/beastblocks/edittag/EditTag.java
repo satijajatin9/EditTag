@@ -155,6 +155,18 @@ public class EditTag extends FrameLayout
                     } else {
                         TextView delActionTagView = (TextView) flowLayout.getChildAt(tagCount - 2);
                         delActionTagView.setBackgroundDrawable(getDrawableByResId(deleteModeBgRes));
+                        if (!alwaysvisible) {
+                            for (int i = 0; i < (flowLayout.getChildCount()); i++) {
+                                if (flowLayout.getChildAt(i) == delActionTagView) {
+                                    ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_cancel_24, 0);
+                                    ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(8);
+
+                                } else {
+                                    ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                    ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(0);
+                                }
+                            }
+                        }
                         lastSelectTagView = delActionTagView;
                         isDelAction = true;
                     }
