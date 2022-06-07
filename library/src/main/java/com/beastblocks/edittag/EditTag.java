@@ -24,6 +24,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -52,8 +53,10 @@ public class EditTag extends FrameLayout
     private FlowLayout flowLayout;
 
     private EditText editText;
+    private NestedScrollView nested;
 
     private int tagViewLayoutRes;
+    private int maxHeight;
     private boolean alwaysvisible = false;
     private boolean onRight = false;
     private boolean drawableStatus = false;
@@ -113,8 +116,8 @@ public class EditTag extends FrameLayout
     public EditTag(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.EditTag);
-        tagViewLayoutRes =
-                mTypedArray.getResourceId(R.styleable.EditTag_tag_layout, R.layout.view_default_tag);
+        tagViewLayoutRes = mTypedArray.getResourceId(R.styleable.EditTag_tag_layout, R.layout.view_default_tag);
+        maxHeight = mTypedArray.getResourceId(R.styleable.EditTag_maxHeight,LayoutParams.WRAP_CONTENT);
         inputTagLayoutRes = mTypedArray.getResourceId(R.styleable.EditTag_input_layout,
                 R.layout.view_default_input_tag);
         deleteModeBgRes =
@@ -136,7 +139,12 @@ public class EditTag extends FrameLayout
         LayoutParams layoutParams =
                 new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         flowLayout.setLayoutParams(layoutParams);
-        addView(flowLayout);
+        nested = new NestedScrollView(getContext());
+        LayoutParams nestedlayoutParams =
+                new LayoutParams(LayoutParams.MATCH_PARENT, maxHeight);
+        nested.setLayoutParams(nestedlayoutParams);
+        nested.addView(flowLayout);
+        addView(nested);
         addInputTagView();
     }
 
@@ -187,11 +195,10 @@ public class EditTag extends FrameLayout
                                         if (onRight) {
                                             ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(null, null, getNamingDrawable(), null);
                                         } else {*/
-                                            ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(getNamingDrawable(), null, null, null);
+                                    ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(getNamingDrawable(), null, null, null);
                                       /* }
                                     } else {
                                         ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-
                                     }*/
                                     ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(0);
                                 }
@@ -206,12 +213,9 @@ public class EditTag extends FrameLayout
                                         ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_cancel_24, 0, 0, 0);
                                     }
                                     ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(8);
-
                                 } else {
-
                                             ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(getNamingDrawable(), null, null, null);
                                         ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(8);
-
                                 }
                             }
                         }*/
@@ -345,7 +349,7 @@ public class EditTag extends FrameLayout
                                     ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(getNamingDrawable(), null, null, null);
                                 }
                             } else {*/
-                                ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                            ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                             //}
                             ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(0);
                         }
@@ -363,7 +367,7 @@ public class EditTag extends FrameLayout
                                 ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(getNamingDrawable(), null, null, null);
                             }
                         } else {*/
-                            ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                        ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                         //}
                         ((TextView) view).setCompoundDrawablePadding(0);
                     }
@@ -389,7 +393,7 @@ public class EditTag extends FrameLayout
                                         ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(getNamingDrawable(), null, null, null);
                                     }
                                 } else {*/
-                                    ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                                 //}
                                 ((TextView) flowLayout.getChildAt(i)).setCompoundDrawablePadding(0);
                             }
