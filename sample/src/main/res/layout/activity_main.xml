@@ -20,6 +20,7 @@
             android:id="@+id/edit_tag_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:maxHeight="100dp"
             app:input_layout="@layout/view_sample_input_tag"
             app:tag_layout="@layout/view_sample_tag" />
 
