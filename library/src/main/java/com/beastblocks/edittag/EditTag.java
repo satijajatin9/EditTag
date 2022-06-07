@@ -117,7 +117,7 @@ public class EditTag extends FrameLayout
         super(context, attrs, defStyleAttr);
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.EditTag);
         tagViewLayoutRes = mTypedArray.getResourceId(R.styleable.EditTag_tag_layout, R.layout.view_default_tag);
-        maxHeight = mTypedArray.getResourceId(R.styleable.EditTag_maxHeight,LayoutParams.WRAP_CONTENT);
+        maxHeight = mTypedArray.getDimensionPixelSize(R.styleable.EditTag_maxHeight,LayoutParams.WRAP_CONTENT);
         inputTagLayoutRes = mTypedArray.getResourceId(R.styleable.EditTag_input_layout,
                 R.layout.view_default_input_tag);
         deleteModeBgRes =
@@ -141,7 +141,7 @@ public class EditTag extends FrameLayout
         flowLayout.setLayoutParams(layoutParams);
         nested = new NestedScrollView(getContext());
         LayoutParams nestedlayoutParams =
-                new LayoutParams(LayoutParams.MATCH_PARENT, maxHeight);
+                new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         nested.setLayoutParams(nestedlayoutParams);
         nested.addView(flowLayout);
         addView(nested);
@@ -231,6 +231,12 @@ public class EditTag extends FrameLayout
             }
         }
         return isHandle;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
