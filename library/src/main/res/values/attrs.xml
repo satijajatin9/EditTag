@@ -4,6 +4,9 @@
         <attr name="tag_layout" format="reference"></attr>
         <attr name="input_layout" format="reference"></attr>
         <attr name="delete_mode_bg" format="reference"></attr>
-        <attr name="maxHeight" format="integer"></attr>
+        <attr name="maxHeight" format="dimension|integer">
+            <enum name="match_parent" value="-1"/>
+            <enum name="wrap_content" value="-2"/>
+        </attr>
     </declare-styleable>
 </resources>
